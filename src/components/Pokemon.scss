@@ -1,0 +1,141 @@
+.border-gradient{
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+}
+
+.border-gradient-purple{
+    border-image-source: linear-gradient(to top, #dac339, #b09444);
+}
+
+.container{
+    width: 300px;
+    height: 400px;
+    background: #edc416;
+    overflow: hidden;
+    align-items: center;
+}
+
+.description{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.description-item{
+    margin: 3px;
+    font-weight: 500;
+}
+img{
+    background: tan;
+    text-decoration: inherit;
+    font-family: system-ui;
+    font-size: 1rem;
+    padding: .2rem .5rem;
+    width: 40%;
+}
+
+.moves{
+    font-size: 15px;
+    font-weight: bolder;
+    padding-top: 4px;
+}
+
+.pokemonName{
+    color: black;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+}
+
+//pokemon types
+.innerCard{
+    position: relative;
+    width: 95%;
+    height: 97%;
+    margin: auto;
+    margin-top: 2%;
+}
+.water {
+    background-color: #1d8a81;
+    background-image: url("../texture.png");
+}
+.fire{
+    background-color: #e23b11;
+    background-image: url("../texture.png"); 
+}
+
+.normal{
+    background-color: #b6b6a8;
+    background-image: url("../texture.png");  
+}
+
+.grass{
+    background-color: #6ea541;
+    background-image: url("../texture.png");  
+}
+
+.poison{
+    background-color: #a3599b;
+    background-image: url("../texture.png");  
+}
+
+.rock{
+    background-color: #ccbb71;
+    background-image: url("../texture.png");  
+}
+
+.psychic{
+    background-color: #aa489f;
+    background-image: url("../texture.png");   
+}
+
+.ice{
+    background-color: #96f1ff;
+    background-image: url("../texture.png");   
+}
+
+.dragon{
+    background-color: #8975ff;
+    background-image: url("../cream-dust.png");   
+}
+
+.bug{
+    background-color: #c2d220;
+    background-image: url("../texture.png"); 
+}
+
+.dark{
+    background-color: #8c6754;
+    background-image: url("../texture.png"); 
+}
+
+.fighting{
+    background-color: #a85644;
+    background-image: url("../texture.png");    
+}
+
+.ghost{
+    background-color: #7975d7;
+    background-image: url("../texture.png");    
+}
+
+.steel{
+    background-color: #c2c1d7;
+    background-image: url("../texture.png");   
+}
+
+.flying{
+    background-color: #79a4ff;
+    background-image: url("../texture.png");   
+}
+
+.electric{
+    background-color: #fee942;
+    background-image: url("../texture.png");   
+}
+
+.fairy{
+    background-color: #f8acff;
+    background-image: url("../texture.png");   
+}

@@ -11,7 +11,8 @@ interface IState {
     sprites: string;
     weight: number;
     height: number;
-    type: string;
+    cardColor: string;
+    typesArray: string[];
     movesArray: string[];
     // description:string;
 }
@@ -22,7 +23,8 @@ const initalState = {
     sprites: '',
     height: 0 ,
     weight: 0 ,
-    type: '',
+    cardColor: '',
+    typesArray: [],
     movesArray: [],
     // description:'',
 }
@@ -56,12 +58,19 @@ class Pokemon extends React.Component<IProps, IState> {
                     for ( let i = 0; i < Math.min(requestedMoves, data.moves.length); i++) {
                         movesArray.push(data.moves.splice(Math.floor(Math.random() * data.moves.length), 1)[0].move.name)
                     }
+
+                    const typesArray: string[] = []
+                    const requestedTypes = 2
+                    for ( let i = 0; i <  data.types.length; i++) {
+                        typesArray.push(data.types[i].type.name)
+                    }
                 this.setState(() => ({
                     name: data.name,
                     sprites,
                     weight: data.weight,
                     height: data.height,
-                    type: data.types[0].type.name,
+                    cardColor: typesArray[0],
+                    typesArray,
                     movesArray,
                 }))
                 console.log(data)
@@ -103,7 +112,8 @@ class Pokemon extends React.Component<IProps, IState> {
                             name={this.state.name}
                             weight={this.state.weight}
                             height={this.state.height}
-                            type={this.state.type}
+                            cardColor={this.state.cardColor}
+                            typesArray={this.state.typesArray}
                             movesArray={this.state.movesArray}
                         />
                     }

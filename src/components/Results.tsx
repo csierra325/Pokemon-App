@@ -5,19 +5,24 @@ interface IProps {
     sprites: string;
     weight: number;
     height: number;
-    type: string;
+    cardColor: string;
+    typesArray: string[];
     movesArray: string[];
 }
-
+ 
 const Results = (props: IProps) => {
     return (
         <div className="container">
-            <div className={`innerCard ${props.type}`}>
+            <div className={`innerCard ${props.cardColor}`}>
                 <div className='title'>
                     <div className="pokemonName">{`${props.name}`}</div>
                     <div  className='HPIcon'>
                         <div className="pokemonName">40 HP</div>
-                        <img className={'icon'} src={`images/${props.type}.png`}/>
+                        {props.typesArray.map((type) => {
+                            return (
+                                <img className={'icon'} src={`images/${type}.png`}/>
+                            )
+                        })}
                     </div>
                 </div>
                 <img className="pokemonSpirite border-gradient border-gradient-purple" src={props.sprites} alt="pokemon img" />
@@ -28,14 +33,14 @@ const Results = (props: IProps) => {
                 <div className="move-list">
                     {props.movesArray.map((move) => {
                         return (
-                            <div>
+                            <div> 
                                 <div className="move-item">{`${move}`}</div>
                             </div>
                         )
                     })}
                 </div>
             </div>
-s        </div>
+        // </div>
     )
 }
 

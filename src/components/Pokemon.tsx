@@ -12,8 +12,8 @@ interface IState {
     weight: number;
     height: number;
     type: string;
-    moves1: string;
-    moves2: string;
+    movesArray: string[];
+    // description:string;
 }
 
 const initalState = {
@@ -23,9 +23,10 @@ const initalState = {
     height: 0 ,
     weight: 0 ,
     type: '',
-    moves1: '',
-    moves2: '',
+    movesArray: [],
+    // description:'',
 }
+
 
 
 class Pokemon extends React.Component<IProps, IState> {
@@ -49,24 +50,45 @@ class Pokemon extends React.Component<IProps, IState> {
                     Math.floor(Math.random() * 5) + 1 === 5 ?
                     data.sprites.front_shiny:
                     data.sprites.front_default
+
+                    const movesArray: string[] = []
+                    const requestedMoves = 2
+                    for ( let i = 0; i < Math.min(requestedMoves, data.moves.length); i++) {
+                        movesArray.push(data.moves.splice(Math.floor(Math.random() * data.moves.length), 1)[0].move.name)
+                    }
                 this.setState(() => ({
                     name: data.name,
                     sprites,
                     weight: data.weight,
                     height: data.height,
                     type: data.types[0].type.name,
-                    moves1: data.moves[0].move.name,
-                    moves2: data.moves[1].move.name
+                    movesArray,
                 }))
                 console.log(data)
-            }) .catch((error) => {
-                alert(error.message)
+                return data;
             })
+            // .then((data) => {
+            //     fetch(`https://pokeapi.co/api/v2/characteristic/${data.id}/`) 
+            //         .then((response) =>{
+            //             if (!response.ok) {
+            //                 throw new Error('pokemon description not found')
+            //             }
+            //             return response.json()
+            //         })
+            //         .then((data) => {
+            //             console.log(`2 ${data.descriptions[1].description}`)
+            //         })
+
+            // }) 
+             .catch((error) => {
+                alert(error.message)
+                })
+
     }
 
     render(){
         return(
-            <div>
+            <div className="app-container">
                 <h1>Find Your Pokemon</h1>
                 <input
                     type="text"
@@ -82,8 +104,7 @@ class Pokemon extends React.Component<IProps, IState> {
                             weight={this.state.weight}
                             height={this.state.height}
                             type={this.state.type}
-                            moves1={this.state.moves1}
-                            moves2={this.state.moves2}
+                            movesArray={this.state.movesArray}
                         />
                     }
             </div>

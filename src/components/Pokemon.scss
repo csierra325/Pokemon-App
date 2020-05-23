@@ -1,3 +1,7 @@
+.app-container{
+    flex-direction: column;
+    text-align: center;
+}
 .border-gradient{
     border: 10px solid;
     border-image-slice: 1;
@@ -14,6 +18,8 @@
     background: #edc416;
     overflow: hidden;
     align-items: center;
+    text-align: center;
+    flex-direction: column;
 }
 
 .description{
@@ -26,7 +32,7 @@
     margin: 3px;
     font-weight: 500;
 }
-img{
+.pokemonSpirite{
     background: tan;
     text-decoration: inherit;
     font-family: system-ui;
@@ -131,11 +137,27 @@ img{
 }
 
 .electric{
-    background-color: #fee942;
+    background-color: #fcec74;
     background-image: url("../texture.png");   
 }
 
 .fairy{
     background-color: #f8acff;
     background-image: url("../texture.png");   
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+}
+
+img.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.HPIcon{
+    display: flex;
+    flex-direction: row;
 }

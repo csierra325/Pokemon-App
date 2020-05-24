@@ -32,16 +32,18 @@ const Results = (props: IProps) => {
                     <div className="description-item">{`Height: ${props.height}ft `}</div>
                 </div>
                 <div className="move-list">
-                    {props.movesArray.map((move) => {
+                    {props.movesArray.map((move, index) => {
+                        const linkContent = props.movesDescription;
                         return (
-                            <div> 
-                                <div className="move-item">{`${move}`}</div>
+                            <div className="move-item">
+                                <div className="moves">{move} - <div className="move-description">{linkContent}</div></div>
+                                
                             </div>
-                        )
+                        )    
                     })}
                 </div>
             </div>
-        // </div>
+        </div>
     )
 }
 

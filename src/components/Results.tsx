@@ -8,6 +8,7 @@ interface IProps {
     cardColor: string;
     typesArray: string[];
     movesArray: string[];
+    movesDescription: string;
 }
  
 const Results = (props: IProps) => {

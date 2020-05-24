@@ -12,9 +12,9 @@ interface IState {
     weight: number;
     height: number;
     cardColor: string;
+    movesDescription: string;
     typesArray: string[];
     movesArray: string[];
-    // description:string;
 }
 
 const initalState = {
@@ -24,9 +24,9 @@ const initalState = {
     height: 0 ,
     weight: 0 ,
     cardColor: '',
+    movesDescription: '',
     typesArray: [],
     movesArray: [],
-    // description:'',
 }
 
 
@@ -60,7 +60,6 @@ class Pokemon extends React.Component<IProps, IState> {
                     }
 
                     const typesArray: string[] = []
-                    const requestedTypes = 2
                     for ( let i = 0; i <  data.types.length; i++) {
                         typesArray.push(data.types[i].type.name)
                     }
@@ -73,28 +72,29 @@ class Pokemon extends React.Component<IProps, IState> {
                     typesArray,
                     movesArray,
                 }))
-                console.log(data)
                 return data;
             })
-            // .then((data) => {
-            //     fetch(`https://pokeapi.co/api/v2/characteristic/${data.id}/`) 
-            //         .then((response) =>{
-            //             if (!response.ok) {
-            //                 throw new Error('pokemon description not found')
-            //             }
-            //             return response.json()
-            //         })
-            //         .then((data) => {
-            //             console.log(`2 ${data.descriptions[1].description}`)
-            //         })
-
-            // }) 
+            .then((data) => {
+                for ( let i = 0; i < this.state.movesArray.length; i++) {
+                fetch(`https://pokeapi.co/api/v2/move/${this.state.movesArray[i]}`) 
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('move description not found')
+                        }
+                        return response.json()
+                    })
+                    .then((data) => {
+                        this.setState(() => ({
+                            movesDescription: data.effect_entries[0].effect
+                        }))
+                    })
+                }
+            }) 
              .catch((error) => {
                 alert(error.message)
                 })
-
-    }
-
+    } 
+ 
     render(){
         return(
             <div className="app-container">
@@ -115,6 +115,7 @@ class Pokemon extends React.Component<IProps, IState> {
                             cardColor={this.state.cardColor}
                             typesArray={this.state.typesArray}
                             movesArray={this.state.movesArray}
+                            movesDescription={this.state.movesDescription}
                         />
                     }
             </div>

@@ -86,7 +86,7 @@ class Pokemon extends React.Component<IProps, IState> {
                     })
                     .then((data) => {
                         this.setState(() => ({
-                            movesDescription: data.effect_entries[0].effect
+                            movesDescription: data.effect_entries[0].short_effect
                         }))
                     })
                 }
@@ -121,7 +121,7 @@ class Pokemon extends React.Component<IProps, IState> {
                 <button
                     onClick={this.handleSubmit}
                 >Search</button>
-                <br></br>
+                <div className="card-results">
                     {this.state.name && 
                         <Results 
                             sprites={this.state.sprites}
@@ -134,6 +134,7 @@ class Pokemon extends React.Component<IProps, IState> {
                             movesDescription={this.state.movesDescription}
                         />
                     }
+                </div>
             </div>
         )
     }

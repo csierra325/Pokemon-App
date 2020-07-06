@@ -37,7 +37,7 @@ const Results = (props: IProps) => {
                         const linkContent = props.movesDescription;
                         return (
                             <div className="move-item">
-                                <div className="moves">{move} - <div className="move-description">{linkContent}</div></div>
+                                <div className="moves">{move} <br></br> <div className="move-description">{linkContent}</div></div>
                             </div>
                         )    
                     })}

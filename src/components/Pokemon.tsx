@@ -2,7 +2,6 @@ import React from 'react';
 
 import Results from './Results'
 import './Pokemon.scss'; 
-
 //interface is the outline of communication
 interface IProps {}
 interface IState {
@@ -12,6 +11,7 @@ interface IState {
     weight: number;
     height: number;
     cardColor: string;
+    hp: number;
     movesDescription: string;
     typesArray: string[];
     movesArray: string[];
@@ -24,6 +24,7 @@ const initalState = {
     height: 0 ,
     weight: 0 ,
     cardColor: '',
+    hp: 0,
     movesDescription: '',
     typesArray: [],
     movesArray: [],
@@ -90,6 +91,20 @@ class Pokemon extends React.Component<IProps, IState> {
                     })
                 }
             }) 
+            // .then((data) => {
+            //     for ( let i = 0; i < this.state.movesArray.length; i++) {
+            //     fetch(`https://pokeapi.co/api/v2/nature/${this.state.movesArray[i]}/`) 
+            //         .then((response) => {
+            //             if (!response.ok) {
+            //                 throw new Error('hp not found')
+            //             }
+            //             return response.json()
+            //         })
+            //         .then((data) => {
+            //            console.log(data)
+            //         })
+            //     }
+            // })
              .catch((error) => {
                 alert(error.message)
                 })
@@ -106,6 +121,7 @@ class Pokemon extends React.Component<IProps, IState> {
                 <button
                     onClick={this.handleSubmit}
                 >Search</button>
+                <br></br>
                     {this.state.name && 
                         <Results 
                             sprites={this.state.sprites}

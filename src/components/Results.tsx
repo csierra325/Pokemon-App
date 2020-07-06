@@ -14,6 +14,7 @@ interface IProps {
 const Results = (props: IProps) => {
     return (
         <div className="container">
+            <div className="outer-card">
             <div className={`innerCard ${props.cardColor}`}>
                 <div className='title'>
                     <div className="pokemonName">{`${props.name}`}</div>
@@ -32,18 +33,19 @@ const Results = (props: IProps) => {
                     <div className="description-item">{`Height: ${props.height}ft `}</div>
                 </div>
                 <div className="move-list">
-                    {props.movesArray.map((move, index) => {
+                    {props.movesArray.map((move) => {
                         const linkContent = props.movesDescription;
                         return (
                             <div className="move-item">
                                 <div className="moves">{move} - <div className="move-description">{linkContent}</div></div>
-                                
                             </div>
                         )    
                     })}
                 </div>
             </div>
         </div>
+     </div>
+           
     )
 }
 

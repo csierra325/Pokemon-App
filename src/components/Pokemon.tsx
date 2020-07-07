@@ -13,6 +13,9 @@ interface IState {
     cardColor: string;
     hp: number;
     movesDescription: string;
+    weakness: string[];
+    resistance: string[];
+    retreat: string[];
     typesArray: string[];
     movesArray: string[];
 }
@@ -26,6 +29,9 @@ const initalState = {
     cardColor: '',
     hp: 0,
     movesDescription: '',
+    weakness: [],
+    resistance: [],
+    retreat: [],
     typesArray: [],
     movesArray: [],
 }
@@ -91,25 +97,32 @@ class Pokemon extends React.Component<IProps, IState> {
                     })
                 }
             }) 
-            // .then((data) => {
-            //     for ( let i = 0; i < this.state.movesArray.length; i++) {
-            //     fetch(`https://pokeapi.co/api/v2/nature/${this.state.movesArray[i]}/`) 
-            //         .then((response) => {
-            //             if (!response.ok) {
-            //                 throw new Error('hp not found')
-            //             }
-            //             return response.json()
-            //         })
-            //         .then((data) => {
-            //            console.log(data)
-            //         })
-            //     }
-            // })
+            .then((data) => {
+                for ( let i = 0; i < this.state.typesArray.length; i++) {
+                    fetch(`https://pokeapi.co/api/v2/type/${this.state.typesArray[i]}`) 
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('type not found')
+                        }
+                        return response.json()
+                    })
+                    .then((data) => {
+                        debugger
+                        this.setState(() => ({
+                            weakness: data.damage_relations.double_damage_from[0].name,
+                            resistance: data.damage_relations.no_damage_from[0].name,
+                            retreat:  data.damage_relations.no_damage_to[0].name
+                        }))
+                        debugger
+                    })
+                }
+            })
              .catch((error) => {
-                alert(error.message)
-                })
+                console.log(error.message)
+            })
     } 
- 
+    
+
     render(){
         return(
             <div className="app-container">
@@ -132,6 +145,9 @@ class Pokemon extends React.Component<IProps, IState> {
                             typesArray={this.state.typesArray}
                             movesArray={this.state.movesArray}
                             movesDescription={this.state.movesDescription}
+                            weakness={this.state.weakness}
+                            resistance={this.state.resistance}
+                            retreat={this.state.retreat}
                         />
                     }
                 </div>

@@ -9,6 +9,9 @@ interface IProps {
     typesArray: string[];
     movesArray: string[];
     movesDescription: string;
+    weakness: string[];
+    resistance: string[];
+    retreat: string[];
 }
  
 const Results = (props: IProps) => {
@@ -28,9 +31,11 @@ const Results = (props: IProps) => {
                     </div>
                 </div>
                 <img className="pokemonSpirite border-gradient border-gradient-purple" src={props.sprites} alt="pokemon img" />
-                <div className="description">
-                    <div className="description-item">{`Weight: ${props.weight}lbs `}</div>
-                    <div className="description-item">{`Height: ${props.height}ft `}</div>
+                <div className="description description-gradient-purple">
+                    {/* <div  className="description-container"> */}
+                        <div className="description-item">{`Weight: ${props.weight}lbs `}</div>
+                        <div className="description-item">{`Height: ${props.height}ft `}</div>
+                    {/* </div> */}
                 </div>
                 <div className="move-list">
                     {props.movesArray.map((move) => {
@@ -41,6 +46,18 @@ const Results = (props: IProps) => {
                             </div>
                         )    
                     })}
+                </div>
+                <div className="type-descriptions">
+                    <div className="weakness">Weakness</div>
+                    <img className={'weakness-icon'} src={`images/${props.weakness}.png`}/>
+                </div>
+                <div>
+                    <div className="resistance">resistance</div>
+                    <img className={'weakness-icon'} src={`images/${props.resistance}.png`}/>
+                </div>
+                <div>
+                    <div className="resistance">retreat</div>
+                    <img className={'weakness-icon'} src={`images/${props.retreat}.png`}/>
                 </div>
             </div>
         </div>

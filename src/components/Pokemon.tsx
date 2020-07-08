@@ -107,7 +107,13 @@ class Pokemon extends React.Component<IProps, IState> {
                         return response.json()
                     })
                     .then((data) => {
-                        debugger
+                        let doubleDamageFrom =  data.damage_relations.double_damage_from
+                        let noDamageFrom  = data.damage_relations.no_damage_from
+                        let noDamageTo = data.damage_relations.no_damage_to
+                        console.log(doubleDamageFrom)
+                        console.log(noDamageFrom)
+                        console.log(noDamageTo)
+                        
                         this.setState(() => ({
                             weakness: data.damage_relations.double_damage_from[0].name,
                             resistance: data.damage_relations.no_damage_from[0].name,

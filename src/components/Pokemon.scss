@@ -198,5 +198,10 @@ img.icon {
 }
 
 .type-descriptions{
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.type-group{ 
+    width: 32%;
 }

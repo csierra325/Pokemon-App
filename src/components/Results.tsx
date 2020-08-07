@@ -9,6 +9,7 @@ interface IProps {
     typesArray: string[];
     movesArray: string[];
     movesDescription: string;
+    pokemonDescription: string;
     weakness: string[];
     resistance: string[];
     retreat: string[];
@@ -25,7 +26,7 @@ const Results = (props: IProps) => {
                         <div className="pokemonName">40 HP</div>
                         {props.typesArray.map((type) => {
                             return (
-                                <img className={'icon'} src={`images/${type}.png`}/>
+                                <img className={'icon'} alt="type" src={`images/${type}.png`}/>
                             )
                         })}
                     </div>
@@ -48,17 +49,18 @@ const Results = (props: IProps) => {
                 <div className="type-descriptions">
                     <div className="type-group">
                         <div className="weakness">Weakness</div>
-                        <img className={'weakness-icon'} src={`images/${props.weakness}.png`}/>
+                        <img className={'weakness-icon'} alt="weakness" src={`images/${props.weakness}.png`}/>
                     </div>
                     <div className="type-group">
                         <div className="weakness">resistance</div>
-                        <img className={'weakness-icon'} src={`images/${props.resistance}.png`}/>
+                        <img className={'weakness-icon'} alt="resistance" src={`images/${props.resistance}.png`}/>
                     </div>
                     <div className="type-group">
                         <div className="weakness">retreat</div>
-                        <img className={'weakness-icon'} src={`images/${props.retreat}.png`}/>
+                        <img className={'weakness-icon'} alt="retreat" src={`images/${props.retreat}.png`}/>
                     </div>
                 </div>
+                <div>{props.pokemonDescription}</div>
             </div>
         </div>
      </div>

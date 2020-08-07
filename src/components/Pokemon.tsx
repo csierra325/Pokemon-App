@@ -13,6 +13,7 @@ interface IState {
     cardColor: string;
     hp: number;
     movesDescription: string;
+    pokemonDescription: string;
     weakness: string[];
     resistance: string[];
     retreat: string[];
@@ -29,6 +30,7 @@ const initalState = {
     cardColor: '',
     hp: 0,
     movesDescription: '',
+    pokemonDescription: '',
     weakness: [],
     resistance: [],
     retreat: [],
@@ -107,19 +109,33 @@ class Pokemon extends React.Component<IProps, IState> {
                         return response.json()
                     })
                     .then((data) => {
-                        let doubleDamageFrom =  data.damage_relations.double_damage_from
-                        let noDamageFrom  = data.damage_relations.no_damage_from
-                        let noDamageTo = data.damage_relations.no_damage_to
-                        console.log(doubleDamageFrom)
-                        console.log(noDamageFrom)
-                        console.log(noDamageTo)
-                        
+                        let noDamageFrom: any;
+                        let noDamageTo : any;
+                        let doubleDamageFrom: any;
+                        !data.damage_relations.double_damage_from.length ? doubleDamageFrom = '' : doubleDamageFrom = data.damage_relations.double_damage_from[0].name
+                        !data.damage_relations.no_damage_from.length ?  noDamageFrom = '' : noDamageFrom = data.damage_relations.no_damage_from[0].name
+                        !data.damage_relations.no_damage_to.length ? noDamageTo = '' : noDamageTo = data.damage_relations.no_damage_to[0].name
                         this.setState(() => ({
-                            weakness: data.damage_relations.double_damage_from[0].name,
-                            resistance: data.damage_relations.no_damage_from[0].name,
-                            retreat:  data.damage_relations.no_damage_to[0].name
+                            weakness: doubleDamageFrom,
+                            resistance: noDamageFrom,
+                            retreat:  noDamageTo,
                         }))
-                        debugger
+                    })
+                }
+            })
+            .then((data) => {
+                for ( let i = 0; i < this.state.typesArray.length; i++) {
+                    fetch(`https://pokeapi.co/api/v2/pokemon-species/${this.state.name}/`) 
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('type not found')
+                        }
+                        return response.json()
+                    })
+                    .then((data) => {
+                        this.setState(() => ({
+                            pokemonDescription: data.flavor_text_entries[0].flavor_text
+                        }))
                     })
                 }
             })
@@ -127,8 +143,6 @@ class Pokemon extends React.Component<IProps, IState> {
                 console.log(error.message)
             })
     } 
-    
-
     render(){
         return(
             <div className="app-container">
@@ -151,6 +165,7 @@ class Pokemon extends React.Component<IProps, IState> {
                             typesArray={this.state.typesArray}
                             movesArray={this.state.movesArray}
                             movesDescription={this.state.movesDescription}
+                            pokemonDescription={this.state.pokemonDescription}
                             weakness={this.state.weakness}
                             resistance={this.state.resistance}
                             retreat={this.state.retreat}

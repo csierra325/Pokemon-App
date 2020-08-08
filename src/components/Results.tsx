@@ -49,18 +49,24 @@ const Results = (props: IProps) => {
                 <div className="type-descriptions">
                     <div className="type-group">
                         <div className="weakness">Weakness</div>
+                        {props.weakness.length > 0 &&
                         <img className={'weakness-icon'} alt="weakness" src={`images/${props.weakness}.png`}/>
-                    </div>
+                        }  
+                        </div>
                     <div className="type-group">
                         <div className="weakness">resistance</div>
+                        {props.resistance.length > 0 &&
                         <img className={'weakness-icon'} alt="resistance" src={`images/${props.resistance}.png`}/>
-                    </div>
+                        }
+                        </div>
                     <div className="type-group">
                         <div className="weakness">retreat</div>
+                        {props.retreat.length > 0 &&
                         <img className={'weakness-icon'} alt="retreat" src={`images/${props.retreat}.png`}/>
+                        }
                     </div>
                 </div>
-                <div>{props.pokemonDescription}</div>
+                <div className="pokemon-descriptions pokemon-descriptions-border border-gradient-gold">{props.pokemonDescription}</div>
             </div>
         </div>
      </div>

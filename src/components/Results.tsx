@@ -23,7 +23,7 @@ const Results = (props: IProps) => {
                 <div className='title'>
                     <div className="pokemonName">{`${props.name}`}</div>
                     <div  className='HPIcon'>
-                        <div className="pokemonName">40 HP</div>
+                        <div className="pokemonHP">40 HP</div>
                         {props.typesArray.map((type) => {
                             return (
                                 <img className={'icon'} alt="type" src={`images/${type}.png`}/>
@@ -66,7 +66,10 @@ const Results = (props: IProps) => {
                         }
                     </div>
                 </div>
-                <div className="pokemon-descriptions pokemon-descriptions-border border-gradient-gold">{props.pokemonDescription}</div>
+                <div className="pokemon-descriptions">
+                <div className="pokemon-descriptions-border border-gradient-gold">{props.pokemonDescription}</div>
+                <div className="made-by">(c)1995, 96, 98 Nintendo, Creatures GAMEFREAK (c) 1999-2000 Wizards</div>
+                </div>
             </div>
         </div>
      </div>

@@ -72,6 +72,14 @@
     text-transform: capitalize;
 }
 
+.pokemonHP{
+    color: red;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    text-transform: capitalize;
+}
+
 .move-item{
     border-bottom: 2px solid rgb(122, 122, 122);
     margin-top: 2px;
@@ -177,7 +185,8 @@
 .title {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; 
+    justify-content: space-around; 
+    padding-top: 10px;
 }
 
 img.icon {
@@ -191,6 +200,7 @@ img.icon {
 }
 
 .weakness{
+    font-weight: 700;
     font-weight: 600;
     font-size: 12px;
 }
@@ -218,8 +228,12 @@ img.icon {
     margin: 10px;
     font-weight: 700;
     position: absolute;
-    bottom: 0;
+    bottom: -13px;
     padding: 3px;   
+}
+
+.made-by{
+    font-size: 8px;
 }
 
 .pokemon-descriptions-border{
